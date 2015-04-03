@@ -1,3 +1,4 @@
 #gedit backup files
 *~
 /target/
+/build/

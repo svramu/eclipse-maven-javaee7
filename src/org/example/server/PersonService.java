@@ -56,12 +56,4 @@ public class PersonService {
   public void delete(@PathParam("id") Integer id) {
     personDao.delete(id);
   }
-
-  private Person copy(Person person) {
-	  Person p = new Person();
-	  p.setUsername(person.getUsername());
-	  p.setPasshash(person.getPasshash());
-	  p.setSalt(person.getSalt());
-	  return p;
-  }
 }

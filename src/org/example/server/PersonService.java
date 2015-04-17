@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.ApplicationScoped;
-import javax.interceptor.Interceptors;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -19,7 +18,6 @@ import org.jboss.ejb3.annotation.SecurityDomain;
 
 @ApplicationScoped
 @Path("/person")
-@Interceptors(SimpleInterceptor.class)
 @SecurityDomain("keycloak")
 public class PersonService {
 

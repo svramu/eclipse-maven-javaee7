@@ -2,9 +2,6 @@ package org.example.server;
 
 import java.util.List;
 
-import javax.annotation.security.PermitAll;
-import javax.annotation.security.RolesAllowed;
-
 import javax.ejb.EJB;
 import javax.enterprise.context.ApplicationScoped;
 import javax.interceptor.Interceptors;

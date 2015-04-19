@@ -5,9 +5,10 @@
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
   
+<!--   
   <security-constraint>
       <web-resource-collection>
-          <web-resource-name>tasks</web-resource-name>
+          <web-resource-name>all</web-resource-name>
           <url-pattern>/*</url-pattern>
       </web-resource-collection>
       <auth-constraint>
@@ -26,5 +27,5 @@
   <security-role>
       <role-name>admin</role-name>
   </security-role>
-      
+ -->      
 </web-app>

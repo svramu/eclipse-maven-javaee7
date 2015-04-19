@@ -3,5 +3,7 @@
 	<persistence-unit name="UnifiedWeb">
     <jta-data-source>java:/chirpDS</jta-data-source>
 		<class>org.example.server.Person</class>
+		<class>org.example.server.Employee</class>
+		<class>org.example.server.Employer</class>
 	</persistence-unit>
 </persistence>

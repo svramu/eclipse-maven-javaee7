@@ -41,5 +41,18 @@ public class EmployerDaoImpl implements EmployerDao {
 		return em.createNamedQuery("Employer.findAll", Employer.class).getResultList();
 	}
     
+	@Override
+	public List<EmploymentDTO> retrieveComplex() {
+		String q = "SELECT "
+				+ "er.name as employer_name, "
+				+ "ee.id as employee_id, "
+				+ "ee.name as employee_name "
+				+ "FROM employer er, employee ee "
+				+ "WHERE ee.employer_id=er.id";
+		@SuppressWarnings("unchecked")
+		List<EmploymentDTO> results = 
+			em.createNativeQuery(q, "complexDtoMapping").getResultList(); 
+		return results;
+	}
 
 }

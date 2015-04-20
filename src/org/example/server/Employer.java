@@ -16,6 +16,20 @@ import java.util.List;
 @Entity
 @Table(name="employer")
 @NamedQuery(name="Employer.findAll", query="SELECT e FROM Employer e")
+
+//http://stackoverflow.com/a/21487061
+//http://docs.oracle.com/javaee/7/api/javax/persistence/ConstructorResult.html
+//http://stackoverflow.com/questions/22663502/how-to-use-constructorresult-annotation
+@SqlResultSetMapping(name="complexDtoMapping", 
+	classes = {@ConstructorResult( targetClass = EmploymentDTO.class, 
+	    columns = {
+			@ColumnResult(name="employer_name"), 
+			@ColumnResult(name="employee_id"),
+			@ColumnResult(name="employee_name")
+		})
+	}
+)
+
 public class Employer implements Serializable {
 	private static final long serialVersionUID = 1L;
 

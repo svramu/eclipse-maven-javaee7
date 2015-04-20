@@ -11,4 +11,5 @@ public interface EmployerDao {
 	public void delete(int id);
 	public Employer retrieve(int id);
 	public List<Employer> retrieve();
+	public List<EmploymentDTO> retrieveComplex();
 }

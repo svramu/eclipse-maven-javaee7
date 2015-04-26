@@ -1,4 +1,4 @@
-package org.example.server;
+package org.example.server.region;
 
 import java.util.List;
 
@@ -17,46 +17,46 @@ import javax.ws.rs.core.MediaType;
 import org.jboss.ejb3.annotation.SecurityDomain;
 
 @ApplicationScoped
-@Path("/person")
+@Path("/region")
 @SecurityDomain("keycloak")
-public class PersonService {
+public class RegionService {
 
   @EJB
-  PersonDao personDao;
+  RegionDao regionDao;
   
   @GET
   @Produces(MediaType.APPLICATION_JSON)
-  public List<Person> retrieve() {
-    return personDao.retrieve();
+  public List<Region> retrieve() {
+    return regionDao.retrieve();
   }
   
   @GET
   @Path("/{id}")
   @Produces(MediaType.APPLICATION_JSON)
-  public Person retrieve(@PathParam("id") Integer id) {
-	  return personDao.retrieve(id);
+  public Region retrieve(@PathParam("id") Integer id) {
+	  return regionDao.retrieve(id);
   }
   
   @POST
   @Consumes(MediaType.APPLICATION_JSON)
   @Produces(MediaType.APPLICATION_JSON)
-  public Person create(Person person) {
-	  person.setId(0);
-	  return personDao.create(person);
+  public Region create(Region region) {
+	  region.setId(0);
+	  return regionDao.create(region);
   }  
 
   @PUT
   @Path("/{id}")
   @Consumes(MediaType.APPLICATION_JSON)
   @Produces(MediaType.APPLICATION_JSON)
-  public Person update(@PathParam("id") Integer id, Person person) {
-    return personDao.update(person);
+  public Region update(@PathParam("id") Integer id, Region region) {
+    return regionDao.update(region);
   }
   
   @DELETE
   @Path("/{id}")
   @Produces(MediaType.TEXT_PLAIN)
   public void delete(@PathParam("id") Integer id) {
-    personDao.delete(id);
+    regionDao.delete(id);
   }
 }

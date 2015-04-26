@@ -1,4 +1,4 @@
-package org.example.server;
+package org.example.server.person;
 
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;

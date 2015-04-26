@@ -1,4 +1,4 @@
-package org.example.server;
+package org.example.server.employer;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonProperty;

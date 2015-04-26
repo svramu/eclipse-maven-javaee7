@@ -1,4 +1,4 @@
-package org.example.server;
+package org.example.server.department;
 
 import java.util.List;
 
@@ -17,46 +17,46 @@ import javax.ws.rs.core.MediaType;
 import org.jboss.ejb3.annotation.SecurityDomain;
 
 @ApplicationScoped
-@Path("/employee")
+@Path("/department")
 @SecurityDomain("keycloak")
-public class EmployeeService {
+public class DepartmentService {
 
   @EJB
-  EmployeeDao employeeDao;
+  DepartmentDao departmentDao;
   
   @GET
   @Produces(MediaType.APPLICATION_JSON)
-  public List<Employee> retrieve() {
-    return employeeDao.retrieve();
+  public List<Department> retrieve() {
+    return departmentDao.retrieve();
   }
   
   @GET
   @Path("/{id}")
   @Produces(MediaType.APPLICATION_JSON)
-  public Employee retrieve(@PathParam("id") Integer id) {
-	  return employeeDao.retrieve(id);
+  public Department retrieve(@PathParam("id") Integer id) {
+	  return departmentDao.retrieve(id);
   }
   
   @POST
   @Consumes(MediaType.APPLICATION_JSON)
   @Produces(MediaType.APPLICATION_JSON)
-  public Employee create(Employee employee) {
-	  employee.setId(0);
-	  return employeeDao.create(employee);
+  public Department create(Department department) {
+	  department.setId(0);
+	  return departmentDao.create(department);
   }  
 
   @PUT
   @Path("/{id}")
   @Consumes(MediaType.APPLICATION_JSON)
   @Produces(MediaType.APPLICATION_JSON)
-  public Employee update(@PathParam("id") Integer id, Employee employee) {
-    return employeeDao.update(employee);
+  public Department update(@PathParam("id") Integer id, Department department) {
+    return departmentDao.update(department);
   }
   
   @DELETE
   @Path("/{id}")
   @Produces(MediaType.TEXT_PLAIN)
   public void delete(@PathParam("id") Integer id) {
-    employeeDao.delete(id);
+    departmentDao.delete(id);
   }
 }

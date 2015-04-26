@@ -1,4 +1,4 @@
-package org.example.server;
+package org.example.server.employee;
 
 import java.util.List;
 

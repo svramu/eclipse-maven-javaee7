@@ -2,8 +2,10 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="UnifiedWeb">
     <jta-data-source>java:/chirpDS</jta-data-source>
-		<class>org.example.server.Person</class>
-		<class>org.example.server.Employee</class>
-		<class>org.example.server.Employer</class>
+		<class>org.example.server.person.Person</class>
+		<class>org.example.server.employee.Employee</class>
+		<class>org.example.server.employer.Employer</class>
+    <class>org.example.server.department.Department</class>
+    <class>org.example.server.region.Region</class>
 	</persistence-unit>
 </persistence>

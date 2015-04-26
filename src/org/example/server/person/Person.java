@@ -1,4 +1,4 @@
-package org.example.server;
+package org.example.server.person;
 
 import java.io.Serializable;
 import javax.persistence.*;

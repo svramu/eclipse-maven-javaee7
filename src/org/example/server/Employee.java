@@ -4,8 +4,6 @@ import java.io.Serializable;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 
 /**
  * The persistent class for the employee database table.
@@ -23,10 +21,9 @@ public class Employee implements Serializable {
 
 	private String name;
 
-	//bi-directional many-to-one association to Employer
-	@ManyToOne
-	@JsonBackReference
-	private Employer employer;
+	private int employer_id;
+
+	private int department_id;
 
 	public Employee() {
 	}
@@ -47,12 +44,20 @@ public class Employee implements Serializable {
 		this.name = name;
 	}
 
-	public Employer getEmployer() {
-		return this.employer;
+	public int getEmployer_id() {
+		return employer_id;
 	}
 
-	public void setEmployer(Employer employer) {
-		this.employer = employer;
+	public void setEmployer_id(int employer_id) {
+		this.employer_id = employer_id;
+	}
+
+	public int getDepartment_id() {
+		return department_id;
+	}
+
+	public void setDepartment_id(int department_id) {
+		this.department_id = department_id;
 	}
 
 }

@@ -17,54 +17,46 @@ import javax.ws.rs.core.MediaType;
 import org.jboss.ejb3.annotation.SecurityDomain;
 
 @ApplicationScoped
-@Path("/employer")
+@Path("/employee")
 @SecurityDomain("keycloak")
-public class EmployerService {
+public class EmployeeService {
 
   @EJB
-  EmployerDao employerDao;
-  
-/*  @GET
-  @Path("/complex")
-  @Produces(MediaType.APPLICATION_JSON)
-  public List<EmploymentDTO> retrieveComplex() {
-    return employerDao.retrieveComplex();
-  }
-*/  
+  EmployeeDao employeeDao;
   
   @GET
   @Produces(MediaType.APPLICATION_JSON)
-  public List<Employer> retrieve() {
-    return employerDao.retrieve();
+  public List<Employee> retrieve() {
+    return employeeDao.retrieve();
   }
   
   @GET
   @Path("/{id}")
   @Produces(MediaType.APPLICATION_JSON)
-  public Employer retrieve(@PathParam("id") Integer id) {
-	  return employerDao.retrieve(id);
+  public Employee retrieve(@PathParam("id") Integer id) {
+	  return employeeDao.retrieve(id);
   }
   
   @POST
   @Consumes(MediaType.APPLICATION_JSON)
   @Produces(MediaType.APPLICATION_JSON)
-  public Employer create(Employer employer) {
-	  employer.setId(0);
-	  return employerDao.create(employer);
+  public Employee create(Employee employee) {
+	  employee.setId(0);
+	  return employeeDao.create(employee);
   }  
 
   @PUT
   @Path("/{id}")
   @Consumes(MediaType.APPLICATION_JSON)
   @Produces(MediaType.APPLICATION_JSON)
-  public Employer update(@PathParam("id") Integer id, Employer employer) {
-    return employerDao.update(employer);
+  public Employee update(@PathParam("id") Integer id, Employee employee) {
+    return employeeDao.update(employee);
   }
   
   @DELETE
   @Path("/{id}")
   @Produces(MediaType.TEXT_PLAIN)
   public void delete(@PathParam("id") Integer id) {
-    employerDao.delete(id);
+    employeeDao.delete(id);
   }
 }

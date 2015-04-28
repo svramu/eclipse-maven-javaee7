@@ -6,6 +6,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.example.server.employer.Employer;
+
 @Stateless
 public class EmployeeDaoImpl implements EmployeeDao {
 
@@ -43,6 +45,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
     
 	@Override
 	public List<Employee> retrieveEmployees(int employerId) {
+		//TODO: Make this a proper HTTP I18n error code 
+		Employer employer = em.find(Employer.class, employerId);
+		if(employer == null) throw new RuntimeException("No such employerId: "+employerId);
+		
 		return em.createNamedQuery("Employee.findForEmployer", Employee.class)
 				.setParameter("employerId", employerId)
 				.getResultList();

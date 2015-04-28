@@ -6,6 +6,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.ApplicationScoped;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -27,14 +28,11 @@ public class EmployeeService {
   
   @GET
   @Produces(MediaType.APPLICATION_JSON)
-  public List<Employee> retrieve() {
-    return employeeDao.retrieve();
-  }
-  
-  @GET
-  @Produces(MediaType.APPLICATION_JSON)
-  public List<Employee> retrieveEmployees(@QueryParam("employerId") Integer employerId) {
-    return employeeDao.retrieveEmployees(employerId);
+  public List<Employee> retrieveAll(
+		  @DefaultValue("-1") @QueryParam("employerId") Integer employerId) {
+	//@DefaultValue ensures that when there is no query parameter it means all employees
+	if(employerId<0) return employeeDao.retrieve();
+	return employeeDao.retrieveEmployees(employerId);
   }
   
   @GET

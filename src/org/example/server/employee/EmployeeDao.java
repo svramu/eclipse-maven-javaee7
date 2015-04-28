@@ -11,4 +11,5 @@ public interface EmployeeDao {
 	public void delete(int id);
 	public Employee retrieve(int id);
 	public List<Employee> retrieve();
+	public List<Employee> retrieveEmployees(int employerId);
 }

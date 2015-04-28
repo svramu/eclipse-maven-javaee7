@@ -12,6 +12,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import org.jboss.ejb3.annotation.SecurityDomain;
@@ -28,6 +29,12 @@ public class EmployeeService {
   @Produces(MediaType.APPLICATION_JSON)
   public List<Employee> retrieve() {
     return employeeDao.retrieve();
+  }
+  
+  @GET
+  @Produces(MediaType.APPLICATION_JSON)
+  public List<Employee> retrieveEmployees(@QueryParam("employerId") Integer employerId) {
+    return employeeDao.retrieveEmployees(employerId);
   }
   
   @GET

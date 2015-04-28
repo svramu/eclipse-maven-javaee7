@@ -41,4 +41,10 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		return em.createNamedQuery("Employee.findAll", Employee.class).getResultList();
 	}
     
+	@Override
+	public List<Employee> retrieveEmployees(int employerId) {
+		return em.createNamedQuery("Employee.findForEmployer", Employee.class)
+				.setParameter("employerId", employerId)
+				.getResultList();
+	}
 }

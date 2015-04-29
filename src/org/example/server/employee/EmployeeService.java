@@ -16,6 +16,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import org.example.server.region.Region;
 import org.jboss.ejb3.annotation.SecurityDomain;
 
 @ApplicationScoped
@@ -64,4 +65,20 @@ public class EmployeeService {
   public void delete(@PathParam("id") Integer id) {
     employeeDao.delete(id);
   }
+
+  @PUT
+  @Path("/{eId}/region/{rId}")
+  @Produces(MediaType.APPLICATION_JSON)
+  public Employee relateRegion(@PathParam("eId") Integer employeeID, 
+		  @PathParam("rId") Integer regionID) {
+    return employeeDao.relateRegion(employeeID, regionID);
+  }
+  
+  @GET
+  @Path("/{id}/region")
+  @Produces(MediaType.APPLICATION_JSON)
+  public List<Region> retriveRegions(@PathParam("id") Integer employeeID) {
+    return employeeDao.retrieveRegions(employeeID);
+  }
+  
 }

@@ -1,8 +1,21 @@
 package org.example.server.employee;
 
 import java.io.Serializable;
+import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+
+import org.example.server.department.Department;
+import org.example.server.region.Region;
 
 
 /**
@@ -15,7 +28,9 @@ import javax.persistence.*;
 	@NamedQuery(name="Employee.findAll", 
 			query="SELECT e FROM Employee e"),
 	@NamedQuery(name="Employee.findForEmployer", 
-			query="SELECT e FROM Employee e WHERE e.employer_id = :employerId")
+			query="SELECT e FROM Employee e WHERE e.employer_id = :employerId"),
+	@NamedQuery(name="Employee.findForDepartment", 
+			query="SELECT e FROM Employee e WHERE e.department.id = :departmentId")
 })
 public class Employee implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -28,7 +43,11 @@ public class Employee implements Serializable {
 
 	private int employer_id;
 
-	private int department_id;
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Department department;
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	private List<Region> region;
 
 	public Employee() {
 	}
@@ -57,12 +76,20 @@ public class Employee implements Serializable {
 		this.employer_id = employer_id;
 	}
 
-	public int getDepartment_id() {
-		return department_id;
+	public List<Region> getRegion() {
+		return region;
 	}
 
-	public void setDepartment_id(int department_id) {
-		this.department_id = department_id;
+	public void setRegion(List<Region> region) {
+		this.region = region;
+	}
+
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
 
 }

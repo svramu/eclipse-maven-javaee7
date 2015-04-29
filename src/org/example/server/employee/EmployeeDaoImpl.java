@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.example.server.employer.Employer;
+import org.example.server.region.Region;
 
 @Stateless
 public class EmployeeDaoImpl implements EmployeeDao {
@@ -53,4 +54,21 @@ public class EmployeeDaoImpl implements EmployeeDao {
 				.setParameter("employerId", employerId)
 				.getResultList();
 	}
+
+	@Override
+	public List<Region> retrieveRegions(int employeeID) {
+		Employee employee = em.find(Employee.class, employeeID);
+		return employee.getRegion();
+	}
+
+	@Override
+	public Employee relateRegion(int employeeID, int regionID) {
+		Employee employee = em.find(Employee.class, employeeID);
+		Region region = em.find(Region.class, regionID);
+		
+		employee.getRegion().add(region);
+		em.merge(employee);
+		return employee;	
+	}
+
 }

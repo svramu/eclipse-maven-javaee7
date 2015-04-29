@@ -8,6 +8,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
@@ -47,6 +49,12 @@ public class Employee implements Serializable {
 	private Department department;
 	
 	@ManyToMany(fetch = FetchType.EAGER)
+	//The following annotation is not required for my example, 
+	//but needed if the table/column names are not the default 
+	@JoinTable(name="employee_region",
+    	joinColumns= @JoinColumn(name="employee_id", referencedColumnName="id"),
+        inverseJoinColumns= @JoinColumn(name="region_id", referencedColumnName="id")
+    )
 	private List<Region> region;
 
 	public Employee() {

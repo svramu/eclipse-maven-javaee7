@@ -7,5 +7,6 @@
 		<class>org.example.server.employer.Employer</class>
     <class>org.example.server.department.Department</class>
     <class>org.example.server.region.Region</class>
+    <class>org.example.server.Farmer</class>
 	</persistence-unit>
 </persistence>

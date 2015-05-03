@@ -5,6 +5,7 @@ import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -19,6 +20,7 @@ import org.jboss.ejb3.annotation.SecurityDomain;
 
 @ApplicationScoped
 @Path("/farmer")
+@Transactional
 @SecurityDomain("keycloak")
 public class FarmerService {
 

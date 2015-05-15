@@ -31,6 +31,7 @@
   
   <build>
     <finalName>unified-web-maven</finalName>
+    
     <sourceDirectory>src</sourceDirectory>
     <resources>
       <resource>
@@ -40,6 +41,7 @@
         </excludes>
       </resource>
     </resources>
+    
     <plugins>
       <plugin>
         <groupId>org.wildfly.plugins</groupId>
@@ -48,6 +50,14 @@
         <configuration>
           <filename>${project.build.finalName}.war</filename>
         </configuration>
+		<executions>
+			<execution>
+				<phase>install</phase>
+				<goals>
+					<goal>deploy</goal>
+				</goals>
+			</execution>
+		</executions>        
       </plugin>
       <plugin>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -66,6 +76,7 @@
         </configuration>
       </plugin>
     </plugins>
+
   </build>
-  
+        
 </project>

@@ -10,7 +10,7 @@ import org.junit.Test;
 
 public class TestFarmer {
   
-  public static final String baseURI = "http://localhost:8080/unified-web-maven/";
+  public static final String baseURI = "http://localhost:8080/unified-web-maven/rest/";
 		
 	@Test
 	public void testCRUD() throws ClientProtocolException, IOException {

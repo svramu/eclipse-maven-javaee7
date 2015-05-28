@@ -4,7 +4,7 @@ import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
 //some comment to create conflict
-@ApplicationPath("/")
+@ApplicationPath("/rest")
 public class MyApplication extends Application {
 
 }

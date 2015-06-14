@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `testdb` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `testdb`;
 -- MySQL dump 10.13  Distrib 5.5.43, for debian-linux-gnu (x86_64)
 --
 -- Host: 127.0.0.1    Database: testdb
@@ -170,6 +172,29 @@ INSERT INTO `employer2` VALUES (1,'empr21'),(2,'empr22');
 UNLOCK TABLES;
 
 --
+-- Table structure for table `farmer`
+--
+
+DROP TABLE IF EXISTS `farmer`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `farmer` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `farmer`
+--
+
+LOCK TABLES `farmer` WRITE;
+/*!40000 ALTER TABLE `farmer` DISABLE KEYS */;
+/*!40000 ALTER TABLE `farmer` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `person`
 --
 
@@ -229,4 +254,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-04-28  9:00:26
+-- Dump completed on 2015-06-14  9:19:20

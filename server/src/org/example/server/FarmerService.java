@@ -5,6 +5,7 @@ import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -14,6 +15,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import org.jboss.ejb3.annotation.SecurityDomain;
@@ -29,8 +31,20 @@ public class FarmerService {
   
   @GET
   @Produces(MediaType.APPLICATION_JSON)
-  public List<Farmer> retrieve() {
-	return em.createNamedQuery("Farmer.findAll", Farmer.class).getResultList();
+  public List<Farmer> retrieve(
+		  @QueryParam("offset") Integer offset, 
+		  @QueryParam("limit") Integer limit) {
+	//return em.createNamedQuery("Farmer.findAll", Farmer.class).getResultList();
+	//http://www.ivanjunckes.com/2013/07/rest-pagination.html
+	TypedQuery<Farmer> q = em.createNamedQuery("Farmer.findAll", Farmer.class);
+	 if(offset != null){
+	  q.setFirstResult(offset);
+	 }
+	  
+	 if(limit != null){
+	  q.setMaxResults(limit);
+	 }
+	 return q.getResultList();
   }
   
   @GET

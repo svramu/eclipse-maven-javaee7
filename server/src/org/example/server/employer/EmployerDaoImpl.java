@@ -50,10 +50,9 @@ public class EmployerDaoImpl implements EmployerDao {
 				+ "ee.id as employee_id, "
 				+ "ee.name as employee_name "
 				+ "FROM employer2 er, employee2 ee "
-				+ "WHERE ee.employer_id=er.id";
+				+ "WHERE ee.employer2_id=er.id";
 		@SuppressWarnings("unchecked")
-		List<EmploymentDTO> results = 
-			em.createNativeQuery(q, "complexDtoMapping").getResultList(); 
+		List<EmploymentDTO> results = em.createNativeQuery(q, "complexDtoMapping").getResultList(); 
 		return results;
 	}
 

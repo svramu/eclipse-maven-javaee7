@@ -2,18 +2,21 @@ package org.example.server.employer;
 
 import java.io.Serializable;
 
+import javax.persistence.ColumnResult;
+import javax.persistence.ConstructorResult;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.SqlResultSetMapping;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="employer")
 @NamedQuery(name="Employer.findAll", query="SELECT e FROM Employer e")
 
-/*
+
 //http://stackoverflow.com/a/21487061
 //http://docs.oracle.com/javaee/7/api/javax/persistence/ConstructorResult.html
 //http://stackoverflow.com/questions/22663502/how-to-use-constructorresult-annotation
@@ -26,7 +29,6 @@ import javax.persistence.Table;
 		})
 	}
 )
-*/
 
 public class Employer implements Serializable {
 	private static final long serialVersionUID = 1L;

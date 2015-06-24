@@ -24,13 +24,12 @@ public class EmployerService {
   @EJB
   EmployerDao employerDao;
   
-/*  @GET
+  @GET
   @Path("/complex")
   @Produces(MediaType.APPLICATION_JSON)
   public List<EmploymentDTO> retrieveComplex() {
     return employerDao.retrieveComplex();
   }
-*/  
   
   @GET
   @Produces(MediaType.APPLICATION_JSON)
